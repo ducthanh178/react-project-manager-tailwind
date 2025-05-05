@@ -14,19 +14,50 @@ function TaskItem({ task, projectId }) {
   };
 
   return (
-    <li>
+    <li className="flex items-center justify-between bg-white shadow p-3 rounded mb-2">
       {isEditing ? (
-        <>
-          <input value={name} onChange={e => setName(e.target.value)} />
-          <button onClick={editTask}>Lưu</button>
-        </>
+        <div className="flex items-center gap-2 w-full">
+          <input
+            value={name}
+            onChange={e => setName(e.target.value)}
+            className="flex-1 border border-gray-300 rounded px-2 py-1"
+          />
+          <button
+            onClick={editTask}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+          >
+            Lưu
+          </button>
+        </div>
       ) : (
-        <>
-          <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>{task.name}</span>
-          <button onClick={toggle}>✔</button>
-          <button onClick={() => setEditing(true)}>✏️</button>
-          <button onClick={deleteTask}>🗑</button>
-        </>
+        <div className="flex items-center justify-between w-full">
+          <span className={`flex-1 ${task.completed ? 'line-through text-gray-400' : ''}`}>
+            {task.name}
+          </span>
+          <div className="flex gap-2">
+            <button
+              onClick={toggle}
+              className="text-green-600 hover:text-green-800 font-bold"
+              title="Hoàn thành"
+            >
+              ✔
+            </button>
+            <button
+              onClick={() => setEditing(true)}
+              className="text-yellow-500 hover:text-yellow-700"
+              title="Chỉnh sửa"
+            >
+              ✏️
+            </button>
+            <button
+              onClick={deleteTask}
+              className="text-red-500 hover:text-red-700"
+              title="Xóa"
+            >
+              🗑
+            </button>
+          </div>
+        </div>
       )}
     </li>
   );

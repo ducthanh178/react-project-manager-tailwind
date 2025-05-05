@@ -6,10 +6,13 @@ function ProjectList() {
   const projects = useContext(ProjectsContext);
 
   return (
-    <div>
-      {projects.map(project => (
-        <ProjectItem key={project.id} project={project} />
-      ))}
+    <div className="max-w-3xl mx-auto px-4 py-6">
+      <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">Danh sách dự án</h2>
+      <div className="space-y-4">
+        {projects.map(project => (
+          <ProjectItem key={project.id} project={project} />
+        ))}
+      </div>
     </div>
   );
 }

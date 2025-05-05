@@ -15,19 +15,52 @@ function ProjectItem({ project }) {
   };
 
   return (
-    <div>
+    <div className="bg-white shadow-md rounded p-4 mb-6">
       {isEditing ? (
-        <>
-          <input value={name} onChange={e => setName(e.target.value)} />
-          <input value={description} onChange={e => setDescription(e.target.value)} />
-          <button onClick={handleEdit}>Lưu</button>
-        </>
+        <div className="flex flex-col gap-2">
+          <input
+            value={name}
+            onChange={e => setName(e.target.value)}
+            className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <input
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <div className="flex gap-2">
+            <button
+              onClick={handleEdit}
+              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            >
+              Lưu
+            </button>
+            <button
+              onClick={() => setEditing(false)}
+              className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400"
+            >
+              Hủy
+            </button>
+          </div>
+        </div>
       ) : (
         <>
-          <h3>{project.name}</h3>
-          <p>{project.description}</p>
-          <button onClick={() => setEditing(true)}>Sửa</button>
-          <button onClick={handleDelete}>Xóa</button>
+          <h3 className="text-lg font-semibold">{project.name}</h3>
+          <p className="text-gray-600 mb-2">{project.description}</p>
+          <div className="flex gap-2 mb-4">
+            <button
+              onClick={() => setEditing(true)}
+              className="bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-500"
+            >
+              Sửa
+            </button>
+            <button
+              onClick={handleDelete}
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+            >
+              Xóa
+            </button>
+          </div>
         </>
       )}
       <TaskList project={project} />

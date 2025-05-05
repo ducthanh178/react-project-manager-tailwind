@@ -11,9 +11,11 @@ function App() {
   return (
     <ProjectsContext.Provider value={projects}>
       <ProjectsDispatchContext.Provider value={dispatch}>
-        <h1>Project Manager</h1>
-        <AddProject />
-        <ProjectList />
+        <div className="min-h-screen bg-gray-100 p-8">
+          <h1 className="text-3xl font-bold text-center mb-8">Project Manager</h1>
+          <AddProject />
+          <ProjectList />
+        </div>
       </ProjectsDispatchContext.Provider>
     </ProjectsContext.Provider>
   );
